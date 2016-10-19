@@ -2,6 +2,7 @@ package fr.ccavalier.soatchallenge.service;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Optional;
@@ -19,6 +20,10 @@ public class FileService {
 			e.printStackTrace();
 		}
 		return value;
+	}
+
+	public static void writeFile(String url, String valueToWrite) throws IOException, URISyntaxException {
+		Files.write(Paths.get(url), valueToWrite.getBytes());
 	}
 	
 }
