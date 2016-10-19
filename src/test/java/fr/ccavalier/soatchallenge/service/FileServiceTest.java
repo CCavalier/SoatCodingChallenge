@@ -1,6 +1,6 @@
 package fr.ccavalier.soatchallenge.service;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,23 +15,22 @@ public class FileServiceTest {
 	
 	FileService fileService = new FileService();
 	
-	URL url = this.getClass().getClassLoader().getResource("test.txt");
+	URL urlInputFile = this.getClass().getClassLoader().getResource("test.txt");
+	
 
 	@Test
 	public void readFileTest() throws URISyntaxException {
-		Optional<String> value = fileService.readFile(url.toURI());
+		Optional<String> value = fileService.readFile(urlInputFile.toURI());
 		assertNotEquals(value, Optional.empty());
 	}
 	
-	
 	@Test
 	public void writeFileTest() throws URISyntaxException, IOException{
-		String outputFile = "C:/output.txt";
-		fileService.writeFile(outputFile, "aze");
-//		Optional<String> value = fileService.readFile(outputFile);
-//		assertNotEquals(value, Optional.empty());
+		URI outputFile = new File(new File(urlInputFile.toURI()).getParentFile().toURI().getPath()+"newFile.txt").toURI();
+		String expectedOutput = "aze";
+		fileService.writeFile(outputFile, expectedOutput);
+		Optional<String> value = fileService.readFile(outputFile);
+		assertNotEquals(value, Optional.empty());
+		assertEquals(expectedOutput, value.get());
 	}
-
-	
-	
 }

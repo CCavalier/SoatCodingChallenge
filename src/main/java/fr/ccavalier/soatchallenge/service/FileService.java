@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class FileService {
 
-	public static Optional<String> readFile(URI url){
+	public Optional<String> readFile(URI url){
 		Optional<String> value = Optional.empty() ;
 		try (Stream<String> stream = Files.lines(Paths.get(url))) {
 
@@ -22,7 +22,7 @@ public class FileService {
 		return value;
 	}
 
-	public static void writeFile(String url, String valueToWrite) throws IOException, URISyntaxException {
+	public void writeFile(URI url, String valueToWrite) throws IOException, URISyntaxException {
 		Files.write(Paths.get(url), valueToWrite.getBytes());
 	}
 	
