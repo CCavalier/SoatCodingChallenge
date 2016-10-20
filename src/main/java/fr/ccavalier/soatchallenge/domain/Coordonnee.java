@@ -4,36 +4,41 @@ public class Coordonnee {
 	/**
 	 * Ligne
 	 */
-	int rs;
+	int ligne;
 	/**
 	 * Colonne
 	 */
-	int cs;
-	/**
-	 * @return la ligne
-	 */
-	public int getLigne() {
-		return rs;
-	}
-	/**
-	 * @param rs la ligne to set
-	 */
-	public void setRs(int rs) {
-		this.rs = rs;
-	}
-	/**
-	 * @return la colonne
-	 */
-	public int getColonne() {
-		return cs;
-	}
-	/**
-	 * @param cs la colonne to set
-	 */
-	public void setCs(int cs) {
-		this.cs = cs;
-	} 
+	int colonne;
 	
+	
+	public Coordonnee(int ligne, int colonne){
+		this.ligne = ligne;
+		this.colonne = colonne;
+	}
+	
+	public Coordonnee(){
+	}
+	
+	public int getLigne() {
+		return ligne;
+	}
+
+
+	public void setLigne(int ligne) {
+		this.ligne = ligne;
+	}
+
+
+	public int getColonne() {
+		return colonne;
+	}
+
+
+	public void setColonne(int colonne) {
+		this.colonne = colonne;
+	}
+
+
 	public boolean equals(Coordonnee obj) {
 		return obj.getColonne()==this.getColonne() && obj.getLigne()==this.getLigne();
 	}
