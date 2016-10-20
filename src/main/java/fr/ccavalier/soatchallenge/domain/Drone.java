@@ -1,5 +1,7 @@
 package fr.ccavalier.soatchallenge.domain;
 
+import java.util.List;
+
 public class Drone {
 	
 	/**
@@ -12,6 +14,8 @@ public class Drone {
 	int nbColisRestants;
 	
 	int nbDeplacementsRestants;
+	
+	List<Integer> listeDeplacements;
 
 	/**
 	 * @return the position
@@ -67,5 +71,14 @@ public class Drone {
 	 */
 	public void setNbDeplacementsRestants(int nbDeplacementsRestants) {
 		this.nbDeplacementsRestants = nbDeplacementsRestants;
+	}
+
+	public void move(Coordonnee position2) {
+		// penser à décrémenter le fucking nb
+		
+	}
+	
+	public int getNbToursRestants() {
+		return Datas.nbTours - this.listeDeplacements.size();
 	}
 }
