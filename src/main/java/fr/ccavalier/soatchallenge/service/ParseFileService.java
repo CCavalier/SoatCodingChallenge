@@ -39,8 +39,8 @@ public class ParseFileService {
 			line = iterator.next();
 			System.out.println(line);
 			String[] thirdLine = line.split("\\s+");
-			map.setLigneDepart(Integer.valueOf(thirdLine[0]));
-			map.setColonneDepart(Integer.valueOf(thirdLine[1]));
+			map.setDepart(new Coordonnee(Integer.valueOf(thirdLine[0]), Integer.valueOf(thirdLine[1])));
+			
 
 			do{
 				line = iterator.next();

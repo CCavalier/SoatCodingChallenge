@@ -8,6 +8,7 @@ import java.net.URL;
 
 import org.junit.Test;
 
+import fr.ccavalier.soatchallenge.domain.Coordonnee;
 import fr.ccavalier.soatchallenge.domain.Map;
 
 public class ParseFileServiceTest {
@@ -23,8 +24,10 @@ public class ParseFileServiceTest {
 		assertEquals(1500, map.getNbCibles());
 		assertEquals(400, map.getNbDrones());
 		assertEquals(1000, map.getDeplacementMax());
-		assertEquals(4, map.getLigneDepart());
-		assertEquals(199, map.getColonneDepart());
+		Coordonnee depart = new Coordonnee(4, 199);
+		assertEquals(depart.getLigne(), map.getDepart().getLigne());
+		assertEquals(depart.getColonne(), map.getDepart().getColonne());
+		/*assertEquals(199, map.getColonneDepart());*/
 		
 		assert(!map.getCoordonneesColis().isEmpty());
 		assertEquals(390, map.getCoordonneesColis().get(0).getLigne());

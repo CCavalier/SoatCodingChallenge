@@ -22,9 +22,7 @@ public class Map {
 	
 	private int nbTours;
 	
-	private int ligneDepart;
-	
-	private int colonneDepart;
+	private Coordonnee depart;
 	
 	private List<Coordonnee> coordonneesColis = new ArrayList<Coordonnee>();
 	
@@ -32,13 +30,6 @@ public class Map {
 		coordonneesColis.add(coordonnees);
 	}
 
-	public int getLigneDepart() {
-		return ligneDepart;
-	}
-
-	public void setLigneDepart(int ligneDepart) {
-		this.ligneDepart = ligneDepart;
-	}
 
 	public int getNbCibles() {
 		return nbCibles;
@@ -88,13 +79,6 @@ public class Map {
 		this.nbColonnes = nbColonnes;
 	}
 
-	public int getColonneDepart() {
-		return colonneDepart;
-	}
-
-	public void setColonneDepart(int colonneDepart) {
-		this.colonneDepart = colonneDepart;
-	}
 
 	public List<Coordonnee> getCoordonneesColis() {
 		return coordonneesColis;
@@ -102,5 +86,13 @@ public class Map {
 
 	public void setCoordonneesColis(List<Coordonnee> coordonneesColis) {
 		this.coordonneesColis = coordonneesColis;
+	}
+
+	public Coordonnee getDepart() {
+		return depart;
+	}
+
+	public void setDepart(Coordonnee depart) {
+		this.depart = depart;
 	}
 }
