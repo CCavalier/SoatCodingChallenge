@@ -27,8 +27,8 @@ public class ParseFileServiceTest {
 		assertEquals(199, map.getColonneDepart());
 		
 		assert(!map.getCoordonneesColis().isEmpty());
-		assertEquals(4, map.getCoordonneesColis().get(0).getLigne());
-		assertEquals(199, map.getCoordonneesColis().get(0).getColonne());
+		assertEquals(390, map.getCoordonneesColis().get(0).getLigne());
+		assertEquals(43, map.getCoordonneesColis().get(0).getColonne());
 	}
 
 	

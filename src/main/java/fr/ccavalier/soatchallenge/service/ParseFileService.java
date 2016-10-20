@@ -21,26 +21,34 @@ public class ParseFileService {
 
 			Iterator<String> iterator = stream.iterator();
 
-			String[] firstLine = iterator.next().split("\\s+");
+			String line = iterator.next();
+			System.out.println(line);
+			String[] firstLine = line.split("\\s+");
 			map.setNbLignes(Integer.valueOf(firstLine[0]));
 			map.setNbColonnes(Integer.valueOf(firstLine[1]));
 
-			String[] secondLine = iterator.next().split("\\s+");
+			line = iterator.next();
+			System.out.println(line);
+			String[] secondLine = line.split("\\s+");
 
 			map.setNbCibles(Integer.valueOf(secondLine[0]));
 			map.setNbDrones(Integer.valueOf(secondLine[1]));
 			map.setDeplacementMax(Integer.valueOf(secondLine[2]));
 			map.setNbTours(Integer.valueOf(secondLine[3]));
 
-			String[] thirdLine = iterator.next().split("\\s+");
+			line = iterator.next();
+			System.out.println(line);
+			String[] thirdLine = line.split("\\s+");
 			map.setLigneDepart(Integer.valueOf(thirdLine[0]));
 			map.setColonneDepart(Integer.valueOf(thirdLine[1]));
 
-			while (iterator.hasNext()) {
-				String[] coordonneesLine = iterator.next().split("\\s+");
+			do{
+				line = iterator.next();
+				System.out.println(line);
+				String[] coordonneesLine = line.split("\\s+");
 				map.addCoordonnees(new Coordonnee(Integer.valueOf(coordonneesLine[0]),
 						Integer.valueOf(coordonneesLine[1])));
-			}
+			}while(iterator.hasNext());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
