@@ -4,6 +4,15 @@ public class Colis {
 	Coordonnee position;
 	
 	boolean estLivre;
+	
+	public Colis(){
+		
+	}
+	
+	public Colis(Coordonnee position){
+		this.position = position;
+		estLivre=false;
+	}
 
 	/**
 	 * @return the position

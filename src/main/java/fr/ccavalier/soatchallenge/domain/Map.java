@@ -26,6 +26,8 @@ public class Map {
 	
 	private List<Coordonnee> coordonneesColis = new ArrayList<Coordonnee>();
 	
+	private List<Colis> colisList = new ArrayList<Colis>();
+	
 	public void addCoordonnees(Coordonnee coordonnees){
 		coordonneesColis.add(coordonnees);
 	}
@@ -94,5 +96,23 @@ public class Map {
 
 	public void setDepart(Coordonnee depart) {
 		this.depart = depart;
+	}
+	
+	public List<Colis> coordoneesToColisList(){
+		List<Colis> colisList = new ArrayList<Colis>();
+		for(Coordonnee coor: coordonneesColis){
+			colisList.add(new Colis(coor));
+		}
+		return colisList;
+	}
+
+
+	public List<Colis> getColisList() {
+		return colisList;
+	}
+
+
+	public void setColisList(List<Colis> colisList) {
+		this.colisList = colisList;
 	}
 }
