@@ -24,6 +24,7 @@ public class FileService {
 
 	public void writeFile(URI url, String valueToWrite) throws IOException, URISyntaxException {
 		Files.write(Paths.get(url), valueToWrite.getBytes());
+		Files.write(Paths.get(url), valueToWrite.getBytes());
 	}
 	
 }

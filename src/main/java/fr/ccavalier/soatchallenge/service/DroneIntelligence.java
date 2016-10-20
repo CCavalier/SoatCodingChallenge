@@ -30,7 +30,7 @@ public class DroneIntelligence {
 			if(colisLePlusProche != null) {
 				// le déplacement est un succès
 				// on lâche le colis
-				drone.drop(colisLePlusProche);
+				/*drone.drop(colisLePlusProche);*/
 			}
 			
 			dead = drone.getNbColisRestants()==0 || colisLePlusProche == null;

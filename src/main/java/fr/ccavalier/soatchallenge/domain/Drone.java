@@ -15,7 +15,7 @@ public class Drone {
 	
 	int nbDeplacementsRestants;
 	
-	List<Integer> listeDeplacements;
+	public List<Integer> listeDeplacements;
 
 	/**
 	 * @return the position
