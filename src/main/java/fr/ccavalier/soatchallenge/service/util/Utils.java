@@ -5,6 +5,8 @@ import java.util.List;
 
 import fr.ccavalier.soatchallenge.domain.Coordonnee;
 import fr.ccavalier.soatchallenge.domain.Directions;
+import fr.ccavalier.soatchallenge.domain.Drone;
+import fr.ccavalier.soatchallenge.domain.Map;
 
 public class Utils {
 
@@ -24,7 +26,7 @@ public class Utils {
 	 * @param B arrivée
 	 * @return le chemin (liste de déplacements)
 	 */
-	private static List<Integer> getChemin(Coordonnee A, Coordonnee B) {
+	public static List<Integer> getChemin(Coordonnee A, Coordonnee B) {
 		boolean onEstArrives =  A.equals(B);
 		List<Integer> deplacements = new ArrayList<Integer>();
 		
@@ -68,8 +70,20 @@ public class Utils {
 		
 		return deplacements;
 	}
-
-	public int min(int A, int B) {
-		return A<B?A:B;
+	 
+	public List<Drone> initFlotte() {
+		List<Drone> flotte = new ArrayList<Drone>();
+		
+		for(int i=0; i<Map.map.getNbDrones();i++) {
+			Drone drone = new Drone();
+			drone.setListeDeplacements(new ArrayList<Integer>());
+			drone.setNbColisInitial(4);
+			drone.setNbColisRestants(drone.getNbColisInitial());
+			drone.setNbDeplacementsRestants(Map.map.getDeplacementMax()-40*4);
+			drone.setPosition(Map.map.getDepart());
+			flotte.add(drone);
+		}
+		
+		return flotte;
 	}
 }

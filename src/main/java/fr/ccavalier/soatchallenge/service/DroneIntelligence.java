@@ -39,13 +39,17 @@ public class DroneIntelligence {
 	
 	public Colis deplacementJusquauColisLePlusProche(Drone drone) {
 		Colis colisLePlusProche = getColisLePlusProche(drone);
-		int distance = Utils.getDistance(drone.getPosition(), colisLePlusProche.getPosition());
-		if(distance<drone.getNbDeplacementsRestants()
-			&& distance<drone.getNbToursRestants()) {
-			// on peut se déplacer jusque là
-			drone.move(colisLePlusProche.getPosition());
+		if(colisLePlusProche != null) {
+			int distance = Utils.getDistance(drone.getPosition(), colisLePlusProche.getPosition());
+			if(distance<drone.getNbDeplacementsRestants()
+				&& distance<drone.getNbToursRestants()) {
+				// on peut se déplacer jusque là
+				drone.move(colisLePlusProche.getPosition());
+			}else {
+				colisLePlusProche = null;
+			}
 		}else {
-			colisLePlusProche = null;
+			// plus de colis
 		}
 		return colisLePlusProche;
 	}

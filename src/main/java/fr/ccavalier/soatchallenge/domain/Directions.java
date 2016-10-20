@@ -1,8 +1,9 @@
 package fr.ccavalier.soatchallenge.domain;
 
 public class Directions {
-	public static int HAUT = 2;
-	public static int BAS = 4;
-	public static int GAUCHE = 1;
-	public static int DROITE = 3;
+	public static final Integer STANBY = 0;
+	public static final int HAUT = 2;
+	public static final int BAS = 4;
+	public static final int GAUCHE = 1;
+	public static final int DROITE = 3;
 }
