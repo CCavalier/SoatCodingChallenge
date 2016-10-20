@@ -12,7 +12,7 @@ public class Coordonnee {
 	/**
 	 * @return la ligne
 	 */
-	public int getRs() {
+	public int getLigne() {
 		return rs;
 	}
 	/**
@@ -24,7 +24,7 @@ public class Coordonnee {
 	/**
 	 * @return la colonne
 	 */
-	public int getCs() {
+	public int getColonne() {
 		return cs;
 	}
 	/**
@@ -34,4 +34,7 @@ public class Coordonnee {
 		this.cs = cs;
 	} 
 	
+	public boolean equals(Coordonnee obj) {
+		return obj.getColonne()==this.getColonne() && obj.getLigne()==this.getLigne();
+	}
 }
