@@ -2,9 +2,13 @@ package fr.ccavalier.soatchallenge.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Map {
 
+	public static Map map;
+	
+	public int nbColisLivres;
 	
 	private int nbLignes;
 	

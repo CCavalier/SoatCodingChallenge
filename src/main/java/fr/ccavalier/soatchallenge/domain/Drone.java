@@ -79,6 +79,6 @@ public class Drone {
 	}
 	
 	public int getNbToursRestants() {
-		return Datas.nbTours - this.listeDeplacements.size();
+		return Map.map.getNbTours() - this.listeDeplacements.size();
 	}
 }
