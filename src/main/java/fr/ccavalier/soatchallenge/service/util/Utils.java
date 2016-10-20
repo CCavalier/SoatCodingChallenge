@@ -5,6 +5,8 @@ import java.util.List;
 
 import fr.ccavalier.soatchallenge.domain.Coordonnee;
 import fr.ccavalier.soatchallenge.domain.Directions;
+import fr.ccavalier.soatchallenge.domain.Drone;
+import fr.ccavalier.soatchallenge.domain.Map;
 
 public class Utils {
 
@@ -67,5 +69,21 @@ public class Utils {
 		}
 		
 		return deplacements;
+	}
+	 
+	public List<Drone> initFlotte() {
+		List<Drone> flotte = new ArrayList<Drone>();
+		
+		for(int i=0; i<Map.map.getNbDrones();i++) {
+			Drone drone = new Drone();
+			drone.setListeDeplacements(new ArrayList<Integer>());
+			drone.setNbColisInitial(4);
+			drone.setNbColisRestants(drone.getNbColisInitial());
+			drone.setNbDeplacementsRestants(Map.map.getDeplacementMax()-40*4);
+			drone.setPosition(Map.map.getDepart());
+			flotte.add(drone);
+		}
+		
+		return flotte;
 	}
 }
