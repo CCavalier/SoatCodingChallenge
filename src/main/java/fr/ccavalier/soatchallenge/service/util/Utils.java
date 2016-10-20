@@ -24,7 +24,7 @@ public class Utils {
 	 * @param B arrivée
 	 * @return le chemin (liste de déplacements)
 	 */
-	private static List<Integer> getChemin(Coordonnee A, Coordonnee B) {
+	public static List<Integer> getChemin(Coordonnee A, Coordonnee B) {
 		boolean onEstArrives =  A.equals(B);
 		List<Integer> deplacements = new ArrayList<Integer>();
 		
@@ -67,9 +67,5 @@ public class Utils {
 		}
 		
 		return deplacements;
-	}
-
-	public int min(int A, int B) {
-		return A<B?A:B;
 	}
 }
