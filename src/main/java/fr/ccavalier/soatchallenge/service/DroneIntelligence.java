@@ -10,7 +10,7 @@ import fr.ccavalier.soatchallenge.service.util.Utils;
 
 public class DroneIntelligence {
 	
-	public void intelligenceFlotte(List<Drone> flotte) {
+	public static void intelligenceFlotte(List<Drone> flotte) {
 		Iterator<Drone> it = flotte.iterator();
 		
 		while(it.hasNext()) {
@@ -21,7 +21,7 @@ public class DroneIntelligence {
 		}
 	}
 		
-	public void intelligenceDrone(Drone drone) {
+	public static void intelligenceDrone(Drone drone) {
 		boolean dead = false;
 		
 		while(!dead) {
@@ -30,14 +30,14 @@ public class DroneIntelligence {
 			if(colisLePlusProche != null) {
 				// le déplacement est un succès
 				// on lâche le colis
-				/*drone.drop(colisLePlusProche);*/
+				drone.drop(colisLePlusProche);
 			}
 			
 			dead = drone.getNbColisRestants()==0 || colisLePlusProche == null;
 		}
 	}
 	
-	public Colis deplacementJusquauColisLePlusProche(Drone drone) {
+	public static Colis deplacementJusquauColisLePlusProche(Drone drone) {
 		Colis colisLePlusProche = getColisLePlusProche(drone);
 		if(colisLePlusProche != null) {
 			int distance = Utils.getDistance(drone.getPosition(), colisLePlusProche.getPosition());
@@ -54,14 +54,14 @@ public class DroneIntelligence {
 		return colisLePlusProche;
 	}
 
-	private Colis getColisLePlusProche(Drone drone) {
-		// TODO penser à virer les colis déjà pris
+	private static Colis getColisLePlusProche(Drone drone) {
 		List<Colis> listColis = Map.map.getColisList();
 		Iterator<Colis> it = listColis.iterator();
 		Colis colisLePlusProche = null;
 		
 		while(it.hasNext()) {
 			Colis colis = it.next();
+			if(colisLePlusProche==null) { colisLePlusProche=colis;}
 			if(!colis.isEstLivre()) {
 				if(Utils.getDistance(drone.getPosition(), colis.getPosition())<Utils.getDistance(drone.getPosition(),colisLePlusProche.getPosition())) {
 					colisLePlusProche = colis;

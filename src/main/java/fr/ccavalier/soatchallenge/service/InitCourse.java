@@ -7,11 +7,11 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.ccavalier.soatchallenge.domain.Drone;
 import fr.ccavalier.soatchallenge.domain.Map;
+import fr.ccavalier.soatchallenge.service.util.Utils;
 
 public class InitCourse {
 
@@ -19,8 +19,11 @@ public class InitCourse {
 		FileService fileService = new FileService();
 		URL urlInputFile = fileService.getClass().getClassLoader().getResource("BigChallengeInput.txt");
 		Map map = ParseFileService.parse(urlInputFile.toURI());
+		Map.map = map;
 		map.setColisList(map.coordoneesToColisList());
-		List<Drone> droneList =new ArrayList<Drone>();
+		List<Drone> droneList = Utils.initFlotte();
+		DroneIntelligence.intelligenceFlotte(droneList);
+		
 		String valueToWrite = "";
 		for(Drone drone : droneList){
 			String moves = String.valueOf(4-drone.getNbColisRestants());

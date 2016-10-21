@@ -36,14 +36,16 @@ public class Utils {
 				if(A.getLigne()<B.getLigne()) {
 					// A est plus haut que B ; on doit donc descendre
 					deplacements.add(Directions.BAS);
+					A.setLigne(A.getLigne()+1);
 				}else {
 					// A est plus bas que B ; on doit donc monter
 					deplacements.add(Directions.HAUT);
+					A.setLigne(A.getLigne()-1);
 				}
 			} else {
 				// ils sont pas sur la même colonne : déplacement latéral donc
 				/** la largeur de la map **/
-				int largeurMap = 0; //TODO : remplacer par la bonne valeur
+				int largeurMap = Map.map.getNbColonnes();
 				/** la distance qui les sépare (en colonne, en ignorant les lignes) **/
 				int distanceEnColonnes = Math.abs(A.getColonne()-B.getColonne());
 				if(distanceEnColonnes<(largeurMap-distanceEnColonnes)) {
@@ -51,27 +53,33 @@ public class Utils {
 					if(A.getColonne()<B.getColonne()) {
 						// A est plus à gauche que B ; on doit donc aller à droite
 						deplacements.add(Directions.DROITE);
+						A.setColonne(A.getColonne()+1);
 					}else {
 						// A est plus à droite que B ; on doit donc aller à gauche
 						deplacements.add(Directions.GAUCHE);
+						A.setColonne(A.getColonne()-1);
 					}
 				}else {
 					// il vaut mieux faire le "tour"
 					if(A.getColonne()<B.getColonne()) {
 						// A est plus à gauche que B ; on doit donc aller à gauche pour faire le tour
 						deplacements.add(Directions.GAUCHE);
+						A.setColonne(A.getColonne()-1);
 					}else {
 						// A est plus à droite que B ; on doit donc aller à droite pour faire le tour
 						deplacements.add(Directions.DROITE);
+						A.setColonne(A.getColonne()+1);
 					}
 				}
 			}
+			System.out.println("Deplacement["+deplacements.size()+"] = " + deplacements.get(deplacements.size()-1));
+			onEstArrives = A.equals(B);
 		}
 		
 		return deplacements;
 	}
 	 
-	public List<Drone> initFlotte() {
+	public static List<Drone> initFlotte() {
 		List<Drone> flotte = new ArrayList<Drone>();
 		
 		for(int i=0; i<Map.map.getNbDrones();i++) {
