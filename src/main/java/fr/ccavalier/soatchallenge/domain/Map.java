@@ -8,8 +8,6 @@ public class Map {
 
 	public static Map map;
 	
-	public int nbColisLivres;
-	
 	private int nbLignes;
 	
 	private int nbColonnes;
@@ -27,6 +25,8 @@ public class Map {
 	private List<Coordonnee> coordonneesColis = new ArrayList<Coordonnee>();
 	
 	private List<Colis> colisList = new ArrayList<Colis>();
+	
+	private List<Colis> colisListInitial = new ArrayList<Colis>();
 	
 	public void addCoordonnees(Coordonnee coordonnees){
 		coordonneesColis.add(coordonnees);
@@ -114,5 +114,15 @@ public class Map {
 
 	public void setColisList(List<Colis> colisList) {
 		this.colisList = colisList;
+	}
+
+
+	public List<Colis> getColisListInitial() {
+		return colisListInitial;
+	}
+
+
+	public void setColisListInitial(List<Colis> colisListInitial) {
+		this.colisListInitial = colisListInitial;
 	}
 }

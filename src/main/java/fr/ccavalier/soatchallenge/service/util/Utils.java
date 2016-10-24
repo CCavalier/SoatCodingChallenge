@@ -3,17 +3,24 @@ package fr.ccavalier.soatchallenge.service.util;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.ccavalier.soatchallenge.domain.Colis;
 import fr.ccavalier.soatchallenge.domain.Coordonnee;
 import fr.ccavalier.soatchallenge.domain.Directions;
 import fr.ccavalier.soatchallenge.domain.Drone;
 import fr.ccavalier.soatchallenge.domain.Map;
+import fr.ccavalier.soatchallenge.domain.Stats;
 
 public class Utils {
 
 	public static int getDistance(Coordonnee A, Coordonnee B) {
 		int distance = 0;
 		
-		distance = getChemin(A, B).size();
+		distance = getChemin(A, B).size(); // TODO : passer par le calcul orthogonal ( sqrt((x1-x2)²+(y1-y2)²) )
+		
+//		System.out.println("Il faut " + distance + " déplacements pour aller de " + A + " à " + B);
+		
+		Stats.moyenneDistance = (Stats.moyenneDistance*Stats.nbDistances+distance) / (Stats.nbDistances + 1 );
+		Stats.nbDistances++;
 		
 		return distance;
 	}
@@ -26,7 +33,9 @@ public class Utils {
 	 * @param B arrivée
 	 * @return le chemin (liste de déplacements)
 	 */
-	public static List<Integer> getChemin(Coordonnee A, Coordonnee B) {
+	public static List<Integer> getChemin(Coordonnee coordA, Coordonnee coordB) {
+		Coordonnee A = new Coordonnee(coordA.getLigne(),coordA.getColonne());
+		Coordonnee B = new Coordonnee(coordB.getLigne(),coordB.getColonne());
 		boolean onEstArrives =  A.equals(B);
 		List<Integer> deplacements = new ArrayList<Integer>();
 		
@@ -64,15 +73,16 @@ public class Utils {
 					if(A.getColonne()<B.getColonne()) {
 						// A est plus à gauche que B ; on doit donc aller à gauche pour faire le tour
 						deplacements.add(Directions.GAUCHE);
-						A.setColonne(A.getColonne()-1);
+						A.setColonne(A.getColonne()<=1?largeurMap:A.getColonne()-1);
 					}else {
 						// A est plus à droite que B ; on doit donc aller à droite pour faire le tour
 						deplacements.add(Directions.DROITE);
-						A.setColonne(A.getColonne()+1);
+						A.setColonne((A.getColonne()+1)%largeurMap);
 					}
 				}
 			}
-			System.out.println("Deplacement["+deplacements.size()+"] = " + deplacements.get(deplacements.size()-1));
+//			System.out.println("Deplacement["+deplacements.size()+"] = " + deplacements.get(deplacements.size()-1));
+//			System.out.println("A est en " + A);
 			onEstArrives = A.equals(B);
 		}
 		
@@ -93,5 +103,15 @@ public class Utils {
 		}
 		
 		return flotte;
+	}
+
+	public static List<Colis> removeColis(List<Colis> colisList, Colis colisADrop) {
+		List<Colis> list = new ArrayList<Colis>();
+		for(Colis col : colisList) {
+			if(col.equals(colisADrop)) {
+				
+			}
+		}
+		return list;
 	}
 }

@@ -27,7 +27,7 @@ public class DroneIntelligence {
 		while(!dead) {
 			// on va chercher le colis le plus proche
 			Colis colisLePlusProche = deplacementJusquauColisLePlusProche(drone);
-			if(colisLePlusProche != null) {
+			if(colisLePlusProche != null ) {
 				// le déplacement est un succès
 				// on lâche le colis
 				drone.drop(colisLePlusProche);
@@ -58,15 +58,21 @@ public class DroneIntelligence {
 		List<Colis> listColis = Map.map.getColisList();
 		Iterator<Colis> it = listColis.iterator();
 		Colis colisLePlusProche = null;
+		int distanceMin=0, distance;
 		
 		while(it.hasNext()) {
 			Colis colis = it.next();
-			if(colisLePlusProche==null) { colisLePlusProche=colis;}
+			if(colisLePlusProche==null) { colisLePlusProche=colis;distanceMin=Utils.getDistance(drone.getPosition(),colisLePlusProche.getPosition());}
+			distance = Utils.getDistance(drone.getPosition(),colis.getPosition());
 			if(!colis.isEstLivre()) {
-				if(Utils.getDistance(drone.getPosition(), colis.getPosition())<Utils.getDistance(drone.getPosition(),colisLePlusProche.getPosition())) {
+				if(distance<distanceMin) {
 					colisLePlusProche = colis;
+					distanceMin = distance;
 				}
 			}
+		}
+		if(colisLePlusProche != null ) {
+			System.out.println("-------\nLe colis le plus proche de " + drone.getPosition() + " est en " + colisLePlusProche.getPosition() + "\n---------");
 		}
 		
 		return colisLePlusProche;
