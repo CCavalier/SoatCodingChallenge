@@ -41,4 +41,12 @@ public class Colis {
 	public void setEstLivre(boolean estLivre) {
 		this.estLivre = estLivre;
 	}
+	
+	@Override
+	public boolean equals(Object arg0) {
+		if(arg0 instanceof Colis) {
+			return ((Colis)arg0).getPosition().equals(this.getPosition());
+		}
+		return super.equals(arg0);
+	}
 }
