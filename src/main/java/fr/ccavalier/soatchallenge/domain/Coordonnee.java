@@ -42,4 +42,8 @@ public class Coordonnee {
 	public boolean equals(Coordonnee obj) {
 		return obj.getColonne()==this.getColonne() && obj.getLigne()==this.getLigne();
 	}
+	
+	public String toString() {
+		return "["+this.getLigne()+","+this.getColonne()+"]";
+	}
 }
